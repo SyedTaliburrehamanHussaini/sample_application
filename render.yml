@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: mushaf-application
+    env: ruby
+    buildCommand: |
+      apt-get update -y && \
+      apt-get install -y libpq-dev && \
+      bundle install
+    startCommand: bundle exec rails server
+    envVars:
+      - key: RAILS_ENV
+        value: production
+      - key: RACK_ENV
+        value: production
+      - key: SECRET_KEY_BASE
+        value: f2bc3dd3fdd5f571fc52aa86bd6b08b9060f4bfb0b099297bd209fd6a4b67cfc9df79c23514f75d6f8c157f0204b619cd09c382a612d75d8325db1a7750638a0
+      - key: DATABASE_URL
+        value: postgresql://mushaf_db_user:snrYWC2TXLwag9Oj0xu5RUFyDO41lwET@dpg-d1drpser433s73fo3h5g-a/mushaf_db
